@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "apriltagging"
+version = "0.1.0"
+description = ""
+authors = ["anthony6444 <anthonydc1972@outlook.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+opencv-contrib-python = "^4.6.0.66"
+apriltags = "^0.0.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
