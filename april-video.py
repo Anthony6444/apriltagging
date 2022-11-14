@@ -6,7 +6,7 @@ while(True):
     ret, frame = cap.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    options = apriltag.DetectorOptions(families="tag36h11")
+    options = apriltag.DetectorOptions(families="tag36h11, tag16h5")
     detector = apriltag.Detector(options)
     results = detector.detect(gray)
 
@@ -34,7 +34,7 @@ while(True):
             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
         cv2.putText(frame, tag_id, (pt1[0], pt1[1] + 5),
             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-        print(f"[INFO] {tag_family}, {tag_id}")
+        print(f"[INFO] {tag_family}, {tag_id} ({cx}, {cy})")
         tags[r.tag_id] = (cx, cy)
     # show the output frame after AprilTag detection
     # print(list(tags.keys()))
@@ -53,7 +53,7 @@ while(True):
         x3 = int(midx + length * math.sin(angle_rad + math.pi))
         y3 = int(midy + length * math.cos(angle_rad + math.pi))
 
-        print(midx, midy, x3, y3, angle_rad, "("+str(angle_rad*180/math.pi)+")")
+        # print(midx, midy, x3, y3, angle_rad, "("+str(angle_rad*180/math.pi)+")")
         cv2.circle(frame, (midx, midy), 5, (255, 0, 0), -1)
         cv2.circle(frame, (x3, y3), 5, (255, 255, 0), -1)
         cv2.line(frame, (x1,y1), (x2,y2), (0, 0, 255), 2)
