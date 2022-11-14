@@ -6,7 +6,7 @@ while(True):
     ret, frame = cap.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    options = apriltag.DetectorOptions(families="tag36h11, tag16h5")
+    options = apriltag.DetectorOptions(families="tag36h11")
     detector = apriltag.Detector(options)
     results = detector.detect(gray)
 
@@ -48,7 +48,7 @@ while(True):
             angle_rad = math.atan((y1-y2)/(x2-x1))
         except ZeroDivisionError:
             angle_rad = 1.570796 # force 90deg
-        length=.3 * ( np.linalg.norm((x1-x2,y1-y2)))
+        length=.53 * ( np.linalg.norm((x1-x2,y1-y2)))
         
         x3 = int(midx + length * math.sin(angle_rad + math.pi))
         y3 = int(midy + length * math.cos(angle_rad + math.pi))
